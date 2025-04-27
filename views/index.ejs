@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produk Kami</title>
+</head>
+<body>
+    <h1>Daftar Produk</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <h2><%= product.name %></h2>
+                <img src="<%= product.image_url %>" width="200" alt="<%= product.name %>">
+                <p>Harga: Rp <%= product.price.toLocaleString('id-ID') %></p>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
