@@ -3,7 +3,7 @@ name: Deploy to AWS EC2
 on:
   push:
     branches:
-      - master  # Trigger deployment on push to main branch
+      - main  # Karena kamu push ke main, bukan master
 
 jobs:
   deploy:
@@ -18,12 +18,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to ECS
+      - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.211.106.193 << 'EOF'
-            cd /var/www/uts_cc
-            sudo git pull origin main
-            sudo systemctl restart httpd
+            cd /home/ec2-user/uts_cc
+            git pull origin main
+            npm install
+            pm2 restart uts-app || pm2 start app.js --name uts-app
           EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
