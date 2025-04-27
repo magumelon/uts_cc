@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Produk Kami</title>
+    <meta charset="UTF-8">
+    <title>Daftar Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .produk {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .produk img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Daftar Produk</h1>
-    <ul>
+    <h1>Orang di The Office beserta harganya~</h1>
+
+    <% if (products.length > 0) { %>
         <% products.forEach(product => { %>
-            <li>
-                <h2><%= product.name %></h2>
-                <img src="<%= product.image_url %>" width="200" alt="<%= product.name %>">
-                <p>Harga: Rp <%= product.price.toLocaleString('id-ID') %></p>
-            </li>
-        <% }); %>
-    </ul>
+            <div class="produk">
+                <h2><%= product.nama %></h2>
+                <img src="<%= product.link_gambar %>" alt="<%= product.nama %>">
+                <p><strong>Harga:</strong> Rp <%= Number(product.harga).toLocaleString('id-ID') %></p>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>Tidak ada produk tersedia.</p>
+    <% } %>
+
 </body>
 </html>

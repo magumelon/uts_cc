@@ -1,0 +1,14 @@
+{
+  "name": "uts_cc",
+  "version": "1.0.0",
+  "description": "UTS Cloud Computing Simple Web",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.8",
+    "mysql": "^2.18.1"
+  }
+}
